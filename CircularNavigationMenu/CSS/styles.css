@@ -1,0 +1,223 @@
+*, *::before, *::after{
+      box-sizing: border-box;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+}
+html{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.menu .toggle{
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      background: #FFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5em;
+      cursor: pointer;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+}
+
+.menu .toggle.active{
+      box-shadow: 0 0 0 68px #FFF;
+      background: #222237;
+      color: #FFF;
+      transform: rotate(315deg);
+      -webkit-transform: rotate(315deg);
+      -moz-transform: rotate(315deg);
+      -ms-transform: rotate(315deg);
+      -o-transform: rotate(315deg);
+}
+
+.menu li{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(40px);
+      -webkit-transform: rotate(calc(360deg / 8 * var(--i))) translateX(40px);
+      -moz-transform: rotate(calc(360deg / 8 * var(--i))) translateX(40px);
+      -ms-transform: rotate(calc(360deg / 8 * var(--i))) translateX(40px);
+      -o-transform: rotate(calc(360deg / 8 * var(--i))) translateX(40px);
+      transform-origin: 138px;
+      left: 10px;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      z-index: 10;
+}
+
+.menu.active li{
+      visibility: visible;
+      opacity: 1;
+}
+
+.menu li a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 55px;
+      height: 55px;
+      font-size: 1.75em;
+      color: #222237;
+      transform: rotate(calc(360deg / -8 * var(--i)));
+      -webkit-transform: rotate(calc(360deg / -8 * var(--i)));
+      -moz-transform: rotate(calc(360deg / -8 * var(--i)));
+      -ms-transform: rotate(calc(360deg / -8 * var(--i)));
+      -o-transform: rotate(calc(360deg / -8 * var(--i)));
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      z-index: 333;
+}
+
+.menu.active li.active{
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(10px);
+      -webkit-transform: rotate(calc(360deg / 8 * var(--i))) translateX(10px);
+      -moz-transform: rotate(calc(360deg / 8 * var(--i))) translateX(10px);
+      -ms-transform: rotate(calc(360deg / 8 * var(--i))) translateX(10px);
+      -o-transform: rotate(calc(360deg / 8 * var(--i))) translateX(10px);
+}
+
+.indicator{
+      position: absolute;
+      left: calc(50% - 2.5px);
+      transform-origin: right;
+      width: 100px;
+      height: 2px;
+      background: transparent;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+}
+
+.indicator::before{
+      content: "";
+      position: absolute;
+      top: -27.5px;
+      left: 72px;
+      width: 55px;
+      height: 55px;
+      background: #000027;
+      box-shadow: 0 0 0 6px #29FD53;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      opacity: 0;
+}
+
+.menu.active .indicator::before{
+      opacity: 1;
+      top: -27.5px;
+      left: -27.5px;
+      background: #29FD53;
+      box-shadow: 0 0 0 6px #222227;
+}
+
+.menu li:nth-child(2).active ~ .indicator{
+      transform: translateX(-99px) rotate(0deg);
+      -webkit-transform: translateX(-99px) rotate(0deg);
+      -moz-transform: translateX(-99px) rotate(0deg);
+      -ms-transform: translateX(-99px) rotate(0deg);
+      -o-transform: translateX(-99px) rotate(0deg);
+}
+.menu li:nth-child(3).active ~ .indicator{
+      transform: translateX(-100px) rotate(45deg);
+      -webkit-transform: translateX(-100px) rotate(45deg);
+      -moz-transform: translateX(-100px) rotate(45deg);
+      -ms-transform: translateX(-100px) rotate(45deg);
+      -o-transform: translateX(-100px) rotate(45deg);
+}
+.menu li:nth-child(4).active ~ .indicator{
+      transform: translateX(-100px) rotate(90deg);
+      -webkit-transform: translateX(-100px) rotate(90deg);
+      -moz-transform: translateX(-100px) rotate(90deg);
+      -ms-transform: translateX(-100px) rotate(90deg);
+      -o-transform: translateX(-100px) rotate(90deg);
+}
+.menu li:nth-child(5).active ~ .indicator{
+      transform: translateX(-100px) rotate(135deg);
+      -webkit-transform: translateX(-103px) rotate(135deg);
+      -moz-transform: translateX(-103px) rotate(135deg);
+      -ms-transform: translateX(-103px) rotate(135deg);
+      -o-transform: translateX(-103px) rotate(135deg);
+}
+.menu li:nth-child(6).active ~ .indicator{
+      transform: translateX(-100px) rotate(179deg);
+      -webkit-transform: translateX(-100px) rotate(179deg);
+      -moz-transform: translateX(-100px) rotate(179deg);
+      -ms-transform: translateX(-100px) rotate(179deg);
+      -o-transform: translateX(-100px) rotate(179deg);
+}
+.menu li:nth-child(7).active ~ .indicator{
+      transform: translateX(-100px) rotate(224deg);
+      -webkit-transform: translateX(-100px) rotate(224deg);
+      -moz-transform: translateX(-100px) rotate(224deg);
+      -ms-transform: translateX(-100px) rotate(224deg);
+      -o-transform: translateX(-100px) rotate(224deg);
+}
+.menu li:nth-child(8).active ~ .indicator{
+      transform: translateX(-100px) rotate(269deg);
+      -webkit-transform: translateX(-100px) rotate(269deg);
+      -moz-transform: translateX(-100px) rotate(269deg);
+      -ms-transform: translateX(-100px) rotate(269deg);
+      -o-transform: translateX(-100px) rotate(269deg);
+}
+.menu li:nth-child(9).active ~ .indicator{
+      transform: translateX(-100px) rotate(314deg);
+      -webkit-transform: translateX(-100px) rotate(314deg);
+      -moz-transform: translateX(-100px) rotate(314deg);
+      -ms-transform: translateX(-100px) rotate(314deg);
+      -o-transform: translateX(-100px) rotate(314deg);
+}
